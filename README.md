@@ -1,0 +1,77 @@
+# Claude Code Config
+
+Personal Claude Code configuration files.
+
+## Installation
+
+Clone to your home directory:
+
+```bash
+git clone https://github.com/jarrodwatts/claude-code-config.git ~/.claude
+```
+
+Or copy specific components:
+
+```bash
+# Clone elsewhere first
+git clone https://github.com/jarrodwatts/claude-code-config.git /tmp/claude-config
+
+# Copy what you need
+cp -r /tmp/claude-config/rules/* ~/.claude/rules/
+cp -r /tmp/claude-config/skills/* ~/.claude/skills/
+cp -r /tmp/claude-config/agents/* ~/.claude/agents/
+```
+
+## Contents
+
+### Rules (`.claude/rules/`)
+
+Path-scoped instructions loaded automatically when working with matching files.
+
+| File | Scope | Description |
+|------|-------|-------------|
+| `typescript.md` | `**/*.{ts,tsx}` | TypeScript conventions |
+| `testing.md` | `**/*.{test,spec}.ts` | Testing patterns |
+| `comments.md` | All files | Comment policy |
+| `forge.md` | `**/*.sol` | Foundry/ZKsync rules |
+
+### Skills (`.claude/skills/`)
+
+Model-invoked capabilities Claude applies automatically.
+
+| Skill | Description |
+|-------|-------------|
+| `planning-with-files` | Manus-style persistent markdown planning |
+
+### Agents (`.claude/agents/`)
+
+Custom subagents for specialized tasks.
+
+| Agent | Description |
+|-------|-------------|
+| `codebase-search` | Find files and implementations |
+| `media-interpreter` | Extract info from PDFs/images |
+| `open-source-librarian` | Research OSS with citations |
+| `tech-docs-writer` | Create technical documentation |
+
+### Commands (`.claude/commands/`)
+
+Custom slash commands.
+
+| Command | Description |
+|---------|-------------|
+| `interview` | Interactive planning/spec fleshing |
+
+### Hooks (`.claude/hooks/`)
+
+Scripts triggered by Claude Code events.
+
+| Hook | Event | Description |
+|------|-------|-------------|
+| `keyword-detector.py` | UserPromptSubmit | Detects keywords in prompts |
+| `check-comments.py` | PostToolUse (Write/Edit) | Validates comment policy |
+| `todo-enforcer.sh` | Stop | Ensures todos are tracked |
+
+### CLAUDE.md
+
+Personal global instructions loaded into every session.
